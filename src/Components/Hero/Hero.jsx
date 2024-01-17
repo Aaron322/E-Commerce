@@ -1,8 +1,8 @@
 import React from 'react'
 import './Hero.css'
-import hand_cion from '../Assets/hand_icon.png'
-import arrow_icon from '../Assets/arrow_icon.png'
-import hero_image from '../Assets/hero_image.png'
+import hand_cion from '../Assets/image/hand_icon.png'
+import arrow_icon from '../Assets/image/arrow_icon.png'
+import hero_image from '../Assets/image/hero_image.png'
 
 export const Hero = () => {
   return (
