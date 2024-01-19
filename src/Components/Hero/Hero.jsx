@@ -1,8 +1,10 @@
 import React from 'react'
 import './Hero.css'
-import hand_cion from '../Assets/image/hand_icon.png'
-import arrow_icon from '../Assets/image/arrow_icon.png'
 import hero_image from '../Assets/image/hero_image.png'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHandPointRight } from '@fortawesome/free-solid-svg-icons'
+import { faNewspaper } from '@fortawesome/free-solid-svg-icons'
 
 export const Hero = () => {
   return (
@@ -12,14 +14,15 @@ export const Hero = () => {
         <div>
           <div className="hand-hand-icon">
             <p>new</p>
-            <img src={hand_cion} alt="" />
+            <FontAwesomeIcon icon={faNewspaper} fixedWidth size="7x" />
           </div>
           <p>collection</p>
           <p>for everyone</p>
         </div>
         <div className="hero-latest-btn">
           <div>Latest Collection</div>
-          <img src={arrow_icon} alt="" />
+          {/* <img src={arrow_icon} alt="" /> */}
+          <FontAwesomeIcon icon={faHandPointRight} fixedWidth size="2x" />
         </div>
       </div>
       <div className="hero-right">

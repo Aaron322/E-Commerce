@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import logo from '../Assets/image/logo.jpg'
-import cart_icon from '../Assets/image/cart_icon.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 export const Navbar = () => {
   const [menu, setMenu] = useState('Shop')
@@ -62,7 +63,7 @@ export const Navbar = () => {
           <button>Login</button>
         </Link>
         <Link to="/cart">
-          <img src={cart_icon} alt="" />
+          <FontAwesomeIcon icon={faShoppingCart} fixedWidth size="2x" />
         </Link>
         <div className="nav-cart-count">0</div>
       </div>
