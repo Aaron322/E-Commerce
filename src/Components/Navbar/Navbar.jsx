@@ -12,20 +12,20 @@ export const Navbar = () => {
     <div className="navbar">
       <div className="nav-logo">
         <img src={logo} alt="" />
-        <p>SHOPPER</p>
+        <p>Store Name</p>
       </div>
       <ul className="nav-menu">
         {/* hr bar will appear when user clicks the tag */}
 
         <li
           onClick={() => {
-            setMenu('Shop')
+            setMenu('Home')
           }}
         >
           <Link style={{ textDecoration: 'none' }} to="/">
-            Shop
+            Home
           </Link>
-          {menu === 'Shop' ? <hr /> : <></>}
+          {menu === 'Home' ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
