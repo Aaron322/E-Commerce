@@ -19,43 +19,43 @@ export const Navbar = () => {
 
         <li
           onClick={() => {
-            setMenu('Home')
+            setMenu('home')
           }}
         >
           <Link style={{ textDecoration: 'none' }} to="/">
             Home
           </Link>
-          {menu === 'Home' ? <hr /> : <></>}
+          {menu === 'home' ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
-            setMenu('Category-1')
+            setMenu('mens')
           }}
         >
-          <Link style={{ textDecoration: 'none' }} to="/category-1">
-            Category-1
+          <Link style={{ textDecoration: 'none' }} to="/mens">
+            Men
           </Link>
-          {menu === 'Category-1' ? <hr /> : <></>}
+          {menu === 'mens' ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
-            setMenu('Category-2')
+            setMenu('womens')
           }}
         >
-          <Link style={{ textDecoration: 'none' }} to="/category-2">
-            Category-2
+          <Link style={{ textDecoration: 'none' }} to="/womens">
+            Women
           </Link>
-          {menu === 'Category-2' ? <hr /> : <></>}
+          {menu === 'womens' ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
-            setMenu('Category-3')
+            setMenu('kids')
           }}
         >
-          <Link style={{ textDecoration: 'none' }} to="/category-3">
-            Category-3
+          <Link style={{ textDecoration: 'none' }} to="/kids">
+            Kids
           </Link>
-          {menu === 'Category-3' ? <hr /> : <></>}
+          {menu === 'Kids' ? <hr /> : <></>}
         </li>
       </ul>
       <div className="nav-login-cart">
