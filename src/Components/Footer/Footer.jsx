@@ -7,8 +7,7 @@ import {
   faFacebook,
   faWhatsapp,
 } from '@fortawesome/free-brands-svg-icons'
-import ReactDOM from 'react-dom'
-import { SocialIcon } from 'react-social-icons'
+
 export const Footer = () => {
   return (
     <div className="footer">
