@@ -1,13 +1,16 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
+import { ShopContext } from '../../Context/ShopContext'
 import logo from '../Assets/image/logo.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { CartItems } from '../CartItems/CartItems'
 
 export const Navbar = () => {
   const [menu, setMenu] = useState('Shop')
+  const { all_product } = useContext(ShopContext)
   return (
     <div className="navbar">
       <div className="nav-logo">
@@ -65,7 +68,11 @@ export const Navbar = () => {
         <Link to="/cart">
           <FontAwesomeIcon icon={faShoppingCart} fixedWidth size="2x" />
         </Link>
-        <div className="nav-cart-count">0</div>
+        <div className="nav-cart-count">
+          {/* {all_product.map((e) => {
+            CartItems[e]
+          })} */}
+        </div>
       </div>
     </div>
   )

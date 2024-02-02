@@ -16,13 +16,37 @@ const ShopContextProvider = (props) => {
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
-    console.log(cartItems)
   }
 
-  const remobveFromCart = (itemId) => {
+  const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
   }
-  const contextVale = { all_product, cartItems, addToCart, remobveFromCart }
+
+  const increaseQuantity = (id) => {
+    setCartItems((prev) => ({
+      ...prev,
+      [id]: (prev[id] || 0) + 1,
+    }))
+  }
+
+  const decreaseQuantity = (id) => {
+    setCartItems((prev) => {
+      // Ensure quantity does not go below 1
+      const newQuantity = prev[id] > 1 ? prev[id] - 1 : 1
+      return {
+        ...prev,
+        [id]: newQuantity,
+      }
+    })
+  }
+  const contextVale = {
+    all_product,
+    cartItems,
+    addToCart,
+    removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
+  }
   return (
     <ShopContext.Provider value={contextVale}>
       {props.children}
