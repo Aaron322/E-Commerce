@@ -15,10 +15,10 @@ export const Navbar = () => {
   const { getTotalQuantity } = useContext(ShopContext)
   const menuRef = useRef()
   const dropdown_toggle = (e) => {
-    // menuRef.current.classList.toggle('nav-menu-visible')
-    // e.target.classList.toggle('open')
+    menuRef.current.classList.toggle('nav-menu-visible')
+    e.target.classList.toggle('open')
     // console.log(menuRef.current.classList)
-    console.log(menuRef.current)
+    // console.log(menuRef.current)
   }
   return (
     <div className="navbar">
