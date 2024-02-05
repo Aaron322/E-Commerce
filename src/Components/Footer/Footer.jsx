@@ -12,7 +12,12 @@ export const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-logo">
-        <FontAwesomeIcon icon={faBagShopping} fixedWidth size="2x" />
+        <FontAwesomeIcon
+          className="faBagShopping"
+          icon={faBagShopping}
+          fixedWidth
+          size="2x"
+        />
         <p>FOOTER</p>
       </div>
       <ul className="footer-links">
@@ -38,7 +43,7 @@ export const Footer = () => {
           <FontAwesomeIcon icon={faWhatsapp} fixedWidth size="2x" />
         </div>
       </div>
-      <div className="copy-right">
+      <div className="copyright">
         <hr />
         <p>Copyright @ 2024</p>
       </div>

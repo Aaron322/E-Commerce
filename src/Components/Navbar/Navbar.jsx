@@ -1,23 +1,38 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import { ShopContext } from '../../Context/ShopContext'
 import logo from '../Assets/image/logo.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import { CartItems } from '../CartItems/CartItems'
+import {
+  faChevronCircleDown,
+  faShoppingCart,
+} from '@fortawesome/free-solid-svg-icons'
 
 export const Navbar = () => {
   const [menu, setMenu] = useState('Shop')
-  const { all_product } = useContext(ShopContext)
+  const { getTotalQuantity } = useContext(ShopContext)
+  const menuRef = useRef()
+  const dropdown_toggle = (e) => {
+    // menuRef.current.classList.toggle('nav-menu-visible')
+    // e.target.classList.toggle('open')
+    // console.log(menuRef.current.classList)
+    console.log(menuRef.current)
+  }
   return (
     <div className="navbar">
       <div className="nav-logo">
         <img src={logo} alt="" />
         <p>Store Name</p>
       </div>
-      <ul className="nav-menu">
+      <FontAwesomeIcon
+        className="nav-dropdown"
+        onClick={dropdown_toggle}
+        icon={faChevronCircleDown}
+        size="xl"
+      />
+      <ul ref={menuRef} className="nav-menu">
         {/* hr bar will appear when user clicks the tag */}
 
         <li
@@ -66,13 +81,15 @@ export const Navbar = () => {
           <button>Login</button>
         </Link>
         <Link to="/cart">
-          <FontAwesomeIcon icon={faShoppingCart} fixedWidth size="2x" />
+          <FontAwesomeIcon
+            className="cart-icon"
+            icon={faShoppingCart}
+            color="#f40fd291;"
+            fixedWidth
+            size="2x"
+          />
         </Link>
-        <div className="nav-cart-count">
-          {/* {all_product.map((e) => {
-            CartItems[e]
-          })} */}
-        </div>
+        <div className="nav-cart-count">{getTotalQuantity()}</div>
       </div>
     </div>
   )

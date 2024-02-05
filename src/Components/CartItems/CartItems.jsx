@@ -13,6 +13,7 @@ export const CartItems = () => {
     removeFromCart,
     decreaseQuantity,
     increaseQuantity,
+    getTotalAmount,
   } = useContext(ShopContext)
 
   return (
@@ -69,9 +70,33 @@ export const CartItems = () => {
         return null
       })}
       <div className="cartitems-footer">
-        <div-caritems-total>
-          <h1></h1>
-        </div-caritems-total>
+        <div className="cartitems-total">
+          <h1>Cart Total</h1>
+          <div>
+            <div className="cartitems-total-item">
+              <p>Subtotal</p>
+              <p>${getTotalAmount()}</p>
+            </div>
+            <hr />
+            <div className="cartitems-total-item">
+              <p>Shipping Fee</p>
+              <p>Free</p>
+            </div>
+            <hr />
+            <div className="cartitems-total-item">
+              <h3>Total</h3>
+              <h3>${getTotalAmount()}</h3>
+            </div>
+          </div>
+          <button>PROCEED TO CHECKOUT</button>
+        </div>
+        <div className="cartitems-promocode">
+          <p>If you have a promo code, enter it here</p>
+          <div className="cartitems-promobox">
+            <input type="text" placeholder="Promo Code" />
+            <button>Submit</button>
+          </div>
+        </div>
       </div>
     </div>
   )

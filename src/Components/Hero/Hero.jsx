@@ -14,7 +14,12 @@ export const Hero = () => {
         <div>
           <div className="hand-hand-icon">
             <p>new</p>
-            <FontAwesomeIcon icon={faNewspaper} fixedWidth size="7x" />
+            <FontAwesomeIcon
+              className="faNewspaper"
+              icon={faNewspaper}
+              fixedWidth
+              size="7x"
+            />
           </div>
           <p>collection</p>
           <p>for everyone</p>
@@ -22,7 +27,12 @@ export const Hero = () => {
         <div className="hero-latest-btn">
           <div>Latest Collection</div>
           {/* <img src={arrow_icon} alt="" /> */}
-          <FontAwesomeIcon icon={faHandPointRight} fixedWidth size="2x" />
+          <FontAwesomeIcon
+            className="faHandPointRight"
+            icon={faHandPointRight}
+            fixedWidth
+            size="xl"
+          />
         </div>
       </div>
       <div className="hero-right">
