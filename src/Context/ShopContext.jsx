@@ -39,6 +39,21 @@ const ShopContextProvider = (props) => {
       }
     })
   }
+  const updateQuantity = (productId, quantity) => {
+    setCartItems((prevItems) => {
+      // Check if the quantity is greater than 0
+      if (quantity > 0) {
+        // Update the quantity for the given product ID
+        return { ...prevItems, [productId]: quantity }
+      } else {
+        // If the quantity is 0 or less, consider removing the item from the cart
+        // This step is optional based on your application's requirements
+        const updatedItems = { ...prevItems }
+        delete updatedItems[productId]
+        return updatedItems
+      }
+    })
+  }
   const getTotalAmount = () => {
     let totalAmount = 0
     for (const item in cartItems) {
@@ -70,6 +85,7 @@ const ShopContextProvider = (props) => {
     decreaseQuantity,
     getTotalAmount,
     getTotalQuantity,
+    updateQuantity,
   }
   return (
     <ShopContext.Provider value={contextVale}>

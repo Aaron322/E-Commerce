@@ -15,7 +15,6 @@ export const CartItems = () => {
     increaseQuantity,
     getTotalAmount,
   } = useContext(ShopContext)
-
   return (
     <div className="cartitems">
       <div className="cartitems-format-main">
@@ -36,6 +35,7 @@ export const CartItems = () => {
                 <p>{e.name}</p>
                 <p>${e.new_price}</p>
                 {/* <button className="cartitems-quanity">{cartItems[e.id]}</button> */}
+
                 <div className="cartitems-quantity-contatiner">
                   <span className="total-quantity">{cartItems[e.id]}</span>
                   <div className="quantity-adjust-buttons">
