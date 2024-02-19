@@ -1,18 +1,71 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import React, { createContext } from 'react'
-import all_product from '../Components/Assets/test_data/all_product'
 
 export const ShopContext = createContext(null)
 const getDefaultCart = () => {
   let cart = {}
-  for (let index = 0; index < all_product.length + 1; index++) {
+  for (let index = 0; index < 300 + 1; index++) {
     cart[index] = 0
   }
   return cart
 }
 
 const ShopContextProvider = (props) => {
+  const [all_product, setAllProduct] = useState([])
   const [cartItems, setCartItems] = useState(getDefaultCart())
+  useEffect(() => {
+    fetch('http://localhost:4000/allproducts')
+      .then((response) => response.json())
+      .then((data) => {
+        setAllProduct(data)
+      })
+  }, [])
+  //auto fetch all products from
+  //user dont need to refresh to get the updated products
+  useEffect(() => {
+    // Create WebSocket connection.
+    const ws = new WebSocket('ws://localhost:8080')
+
+    // Connection opened
+    ws.onopen = () => {
+      console.log('Connected to WS Server')
+    }
+
+    // Listen for messages
+    ws.onmessage = (event) => {
+      const message = JSON.parse(event.data)
+      console.log('Message from server ', message)
+
+      // Assuming the server sends an object with a type property
+      switch (message.type) {
+        case 'new-product':
+          // Assuming message.data contains the new product
+          setAllProduct((prevProducts) => [...prevProducts, message.data])
+          break
+        case 'update-product':
+          // If the message is to update a product, find it by id and update
+          setAllProduct((prevProducts) =>
+            prevProducts.map((product) =>
+              product.id === message.data.id
+                ? { ...product, ...message.data }
+                : product
+            )
+          )
+          break
+        default:
+          console.log('Unhandled message type:', message.type)
+      }
+    }
+
+    // Listen for possible errors
+    ws.onerror = (error) => {
+      console.error('WebSocket error: ', error)
+    }
+
+    // Cleanup on component unmount
+    return () => ws.close()
+  }, []) // Empty dependency array means this effect runs only once on mount
+  // Empty dependency array means this effect runs only once on mount
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
